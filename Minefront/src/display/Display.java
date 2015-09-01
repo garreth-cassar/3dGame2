@@ -27,6 +27,10 @@ public class Display extends Canvas implements Runnable {
     private Game game = new Game();
 
     public Display(){
+        Dimension size = new Dimension(WIDTH, HEIGHT);
+        setPreferredSize(size);
+        setMinimumSize(size);
+        setMaximumSize(size);
         screen = new Screen(WIDTH, HEIGHT);
         img = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
         pixels = ((DataBufferInt)img.getRaster().getDataBuffer()).getData();
@@ -60,11 +64,10 @@ public class Display extends Canvas implements Runnable {
         JFrame frame = new JFrame();
 
         frame.add(game);
-
+        frame.pack();
         frame.setTitle(TITLE);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(WIDTH, HEIGHT);
         frame.setResizable(false);
         frame.setVisible(true);
 
